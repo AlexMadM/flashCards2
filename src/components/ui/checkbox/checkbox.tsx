@@ -14,6 +14,7 @@ export type CheckboxProps = {
   disabled?: boolean
   id?: string
   label?: string
+  name?: string
   onChange?: (checked: boolean) => void
   position?: 'left'
   required?: boolean
