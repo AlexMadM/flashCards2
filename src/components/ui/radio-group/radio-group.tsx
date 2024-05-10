@@ -1,11 +1,10 @@
 import { FC } from 'react'
 
+import { Typography } from '@/components/ui/typography'
 import * as RadioGr from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
 import s from './radio-group.module.scss'
-
-import { Typography } from '@/components/ui/typography'
 
 export type Option = {
   label: string
@@ -13,22 +12,22 @@ export type Option = {
 }
 
 export type RadioGroupProps = {
-  options: Option[]
-  name?: string
-  value?: string
-  onValueChange?: (value: string) => void
-  errorMessage?: string
   disabled?: boolean
+  errorMessage?: string
+  name?: string
+  onValueChange?: (value: string) => void
+  options: Option[]
+  value?: string
 }
 
-export const RadioGroup: FC<RadioGroupProps> = ({ options, errorMessage, ...rest }) => {
+export const RadioGroup: FC<RadioGroupProps> = ({ errorMessage, options, ...rest }) => {
   const labelClasses = clsx(s.item, rest.disabled && s.disabled)
 
   return (
     <RadioGr.Root aria-label={'Aria label'} {...rest} className={s.root}>
       {options.map(el => (
-        <Typography as={'label'} variant={'body2'} key={el.value} className={labelClasses}>
-          <RadioGr.Item value={el.value} className={s.radio}>
+        <Typography as={'label'} className={labelClasses} key={el.value} variant={'body2'}>
+          <RadioGr.Item className={s.radio} value={el.value}>
             <div className={s.frame}></div>
             <RadioGr.Indicator className={s.indicator} />
           </RadioGr.Item>
@@ -36,7 +35,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({ options, errorMessage, ...rest
         </Typography>
       ))}
       {errorMessage && (
-        <Typography variant={'caption'} className={s.error}>
+        <Typography className={s.error} variant={'caption'}>
           {errorMessage}
         </Typography>
       )}

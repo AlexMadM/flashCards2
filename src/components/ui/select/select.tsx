@@ -1,67 +1,66 @@
 import { FC, ReactNode } from 'react'
 
+import { Icon } from '@/components/ui/icon/icon.tsx'
+import { Option } from '@/components/ui/radio-group'
+import { Typography } from '@/components/ui/typography'
 import * as SelectRadix from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './select.module.scss'
 
-import { Icon } from '@/components/ui/icon/icon.tsx'
-import { Option } from '@/components/ui/radio-group'
-import { Typography } from '@/components/ui/typography'
-
 export type SelectPropsType = {
-  label?: string
-  placeholder?: ReactNode
-  value?: string
-  onValueChange?: (value: any) => void
-  defaultValue?: any
-  options: Option[]
-  disabled?: boolean
-  required?: boolean
   className?: string
+  defaultValue?: any
+  disabled?: boolean
+  label?: string
+  onValueChange?: (value: any) => void
+  options: Option[]
+  placeholder?: ReactNode
+  required?: boolean
   small?: boolean
+  value?: string
 }
 
 export const Select: FC<SelectPropsType> = ({
-  label,
-  placeholder,
-  value,
-  onValueChange,
-  defaultValue,
-  options,
-  disabled,
-  required,
   className,
+  defaultValue,
+  disabled,
+  label,
+  onValueChange,
+  options,
+  placeholder,
+  required,
   small,
+  value,
 }) => {
   const classes = {
-    label: clsx(s.label, disabled && s.labelDisabled, className),
-    trigger: clsx(s.trigger, disabled && s.triggerDisabled, small && s.small),
     icon: clsx(s.icon, disabled && s.iconDisabled),
     item: clsx(s.item, small && s.small),
+    label: clsx(s.label, disabled && s.labelDisabled, className),
+    trigger: clsx(s.trigger, disabled && s.triggerDisabled, small && s.small),
   }
 
   return (
-    <Typography variant={'body2'} as={'label'} className={classes.label}>
+    <Typography as={'label'} className={classes.label} variant={'body2'}>
       {label}
       <SelectRadix.Root
         defaultValue={defaultValue}
-        value={value}
-        onValueChange={onValueChange}
         disabled={disabled}
+        onValueChange={onValueChange}
         required={required}
+        value={value}
       >
-        <SelectRadix.Trigger className={classes.trigger} asChild aria-label={'select'}>
+        <SelectRadix.Trigger aria-label={'select'} asChild className={classes.trigger}>
           <button>
             <SelectRadix.Value placeholder={placeholder} />
-            <Icon name={'arrowDown'} className={classes.icon} />
+            <Icon className={classes.icon} name={'arrowDown'} />
           </button>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
-          <SelectRadix.Content position={'popper'} className={s.content}>
+          <SelectRadix.Content className={s.content} position={'popper'}>
             <SelectRadix.Viewport>
               {options.map(el => (
-                <SelectRadix.Item key={el.value} value={el.value} className={classes.item}>
+                <SelectRadix.Item className={classes.item} key={el.value} value={el.value}>
                   <SelectRadix.ItemText>{el.label}</SelectRadix.ItemText>
                 </SelectRadix.Item>
               ))}
