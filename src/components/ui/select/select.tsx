@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
 
-import { Icon } from '@/components/ui/icon/icon.tsx'
+import { Icon } from '@/components/ui/icon/icon'
 import { Option } from '@/components/ui/radio-group'
 import { Typography } from '@/components/ui/typography'
 import * as SelectRadix from '@radix-ui/react-select'
