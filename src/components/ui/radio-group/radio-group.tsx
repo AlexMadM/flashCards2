@@ -14,6 +14,7 @@ export type Option = {
 export type RadioGroupProps = {
   disabled?: boolean
   errorMessage?: string
+  id?: string
   name?: string
   onValueChange?: (value: string) => void
   options: Option[]
