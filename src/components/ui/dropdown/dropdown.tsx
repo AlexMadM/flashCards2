@@ -6,7 +6,7 @@ import { Typography } from '@/components/ui/typography'
 import * as DropdownMenuRadix from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 
-import s from './drop-down.module.scss'
+import s from './dropdown.module.scss'
 
 export type DropdownProps = {
   align?: 'center' | 'end' | 'start'
