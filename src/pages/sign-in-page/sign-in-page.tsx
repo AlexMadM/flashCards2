@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { Page, SignIn } from '@/components'
+import { Page } from '@/components/ui/page'
 import { useLoginMutation } from '@/services/auth/auth.service'
 import { LoginArgs } from '@/services/auth/auth.types'
 
