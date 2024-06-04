@@ -1,13 +1,16 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { ControlledTextField } from '@/components/ui/controlled'
+import { FormCheckbox } from '@/components/ui/form-checkbox/form-checkbox'
+import { Typography } from '@/components/ui/typography'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-in.module.scss'
-
-import { Button, Card, ControlledCheckbox, ControlledTextField, Typography } from '../../ui'
 
 const schema = z.object({
   email: z.string().email('Invalid email address').nonempty('Enter email'),
@@ -57,7 +60,7 @@ export const SignIn = (props: Props) => {
               type={'password'}
             />
           </div>
-          <ControlledCheckbox
+          <FormCheckbox
             className={s.checkbox}
             control={control}
             label={'Remember me'}
